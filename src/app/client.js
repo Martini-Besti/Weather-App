@@ -11,7 +11,7 @@ export class ApiClient {
     }
 
     //params = {} means return an empty object of no paramaters
-    async getRequest(endpoint, params = {}) {
+    async getRequest(_arg, params = {}) {
         try {
             const response = await axios.get("/api/weather", {params})
             return this.responseStatusCheck(response);
@@ -22,48 +22,25 @@ export class ApiClient {
 
     }
 
-
-    async getUSers() {
-        return this.getRequest("", { results: 10 });
+    async getWeather() {
+        return this.getRequest("");
     }
 
-    async getUsersByNationality(nat) {
-        return this.getRequest("", { nat, results: 10});
-    }
+   
+    
+    //FINISH IF HAVE TIME TO PUT IN DROPDOWN
+    // async getWeatherByLocation({longitude, latitude}) {
+    //     const params = { results: 10};
+    //     if (nationality) params.nat = nationality;
+    //     if (gender) params.gender = gender;
+    //     return this.getRequest("", params);
+    // }
 
-    async getUsersByGender(gender) {
-        return this.getRequest("", {
-            gender,
-            results: 10,
-        });
-    }
-
-    async getUsersByFilters({nationality, gender}) {
+   
+    //filtering weather data by date
+    async getWeatherByFilters({day}) {
         const params = { results: 10};
-        if (nationality) params.nat = nationality;
-        if (gender) params.gender = gender;
-        return this.getRequest("", params);
-    }
-
-    async getUsers() {
-        return this.getRequest("", { results: 10 });
-    }
-
-    async getUsersByNationality(nat) {
-        return this.getRequest("", { nat, results: 10});
-    }
-
-    async getUsersByGender(gender) {
-        return this.getRequest("", {
-            gender,
-            results: 10,
-        });
-    }
-
-    async getUsersByFilters({nationality, gender}) {
-        const params = { results: 10};
-        if (nationality) params.nat = nationality;
-        if (gender) params.gender = gender;
+        if (day) params.day = date;
         return this.getRequest("", params);
     }
 

@@ -1,27 +1,27 @@
 "use client";
 import { useEffect, useState } from "react";
 import { ApiClient } from "./client";
-const nationalities = ["US", "FR", "DE", "GB", "ES"];
+
+const longitude = 51.51;
+const latitude = 0.12;
 
 export default function Home() {
   const client = new ApiClient();
 
   //array for all users to display
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [gender, setGender] = useState("");
+  const [weather, setWeather] = useState({});
+  const [maxTemp, setMaxTemp] = useState(0);
   const [nationality, setNationality] = useState("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchUsers = async () => {
+  const fetchWeather = async () => {
+    
     setLoading(true);
 
     try {
-      const response = await client.getUsersByFilters({
-        nationality,
-        gender,
-      });
-      setUsers(response.results);
+      const response = await client.getWeather();
+      setWeather(response);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -32,18 +32,23 @@ export default function Home() {
   };
 
   useEffect(() => {
-    fetchUsers();
-  }, [gender, nationality]);
+    fetchWeather();
+  }, []);
+
+  useEffect(() => {
+    console.log(weather)
+  }, [weather])
 
   return (
     <div className="max-w-7xl mx-auto">
       {loading && <div>Loading...</div>}
       {error && <div>There was an error</div>}
       <div className="text-center">
-        <h1 className="font-bold text-4xl">Random User Directory</h1>
+        <h1 className="font-bold text-4xl">Weather</h1>
       </div>
       <div>
-        <select
+      
+        {/* <select
           value={nationality}
           onChange={(e) => setNationality(e.target.value)}
         >
@@ -60,17 +65,38 @@ export default function Home() {
           <option value="">All Genders</option>
           <option value={"male"}>Male</option>
           <option value={"female"}>Feale</option>
-        </select>
-      </div>
+        </select> */}
 
-      {users.map((user) => {
+            {/*
+            {weather.current} {" "}
+            <img src={weather.daily} />{" "}
+            */}
+
+          {/*
+
+         {weather.map((weather, index) => {
         return (
-          <div key={user.cell}>
-            {user.name.first} {user.name.last}{" "}
-            <img src={user.picture.thumbnail} />{" "}
+          <div key={index}>
+            {weather.current.temp} {" "}
+            <img src={weather.daily.weather.icon} />{" "}
           </div>
         );
       })}
+
+      */}      
+     
+
+        <div>{
+            weather?.daily?.map(item => {
+              return <div>{item.moonset}</div>
+            })
+          }</div>
+
+           <div> {weather.current.temp}
+          </div>
+          
+      </div> 
+     
     </div>
   );
 }
