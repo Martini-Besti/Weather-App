@@ -53,7 +53,7 @@ export default function Home() {
     <div className="max-w-7xl mx-auto">
       {error && <div>There was an error</div>}
       <div className="text-center">
-        <h1 className="font-bold text-4xl">Weather</h1>
+        
       </div>
       <div>
         {/* <select
@@ -93,12 +93,14 @@ export default function Home() {
 
       */}
 
+      <main className="w-[100vw] flex justify-center">
       <MainCard 
         date={dateText}
-        temp={weather?.current?.temp} 
+        temp={parseInt(weather?.current?.temp)} 
         wind={weather?.current?.wind_speed}
         location={weather?.timezone}
       />
+      </main>
 
         {/* <div>
           {weather?.daily?.map((item, index) => {
