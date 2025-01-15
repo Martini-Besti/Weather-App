@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { ApiClient } from "./client";
 
+import MainCard from "@/components/MainCard";
+
 const longitude = 51.51;
 const latitude = 0.12;
 
@@ -16,7 +18,6 @@ export default function Home() {
   const [error, setError] = useState(null);
 
   const fetchWeather = async () => {
-    
     setLoading(true);
 
     try {
@@ -36,18 +37,25 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    console.log(weather)
-  }, [weather])
+    console.log(weather);
+  }, [weather]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  //getting time data from API and converting to human-readable date & day of the week
+  var date = new Date(weather?.current?.dt * 1000);
+  const allDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Saturday"];
+  const dateText = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${allDays[date.getDay() - 1]}`;
 
   return (
     <div className="max-w-7xl mx-auto">
-      {loading && <div>Loading...</div>}
       {error && <div>There was an error</div>}
       <div className="text-center">
         <h1 className="font-bold text-4xl">Weather</h1>
       </div>
       <div>
-      
         {/* <select
           value={nationality}
           onChange={(e) => setNationality(e.target.value)}
@@ -67,12 +75,12 @@ export default function Home() {
           <option value={"female"}>Feale</option>
         </select> */}
 
-            {/*
+        {/*
             {weather.current} {" "}
             <img src={weather.daily} />{" "}
             */}
 
-          {/*
+        {/*
 
          {weather.map((weather, index) => {
         return (
@@ -83,20 +91,24 @@ export default function Home() {
         );
       })}
 
-      */}      
-     
+      */}
 
-        <div>{
-            weather?.daily?.map(item => {
-              return <div>{item.moonset}</div>
-            })
-          }</div>
+      <MainCard 
+        date={dateText}
+        temp={weather?.current?.temp} 
+        wind={weather?.current?.wind_speed}
+        location={weather?.timezone}
+      />
 
-           <div> {weather.current.temp}
-          </div>
-          
-      </div> 
-     
+        {/* <div>
+          {weather?.daily?.map((item, index) => {
+            return <div key={index}>{item.wind_speed}</div>;
+          })}
+
+        </div> */}
+
+        {/* //<div> {weather?.current?.temp}</div> */}
+      </div>
     </div>
   );
 }
