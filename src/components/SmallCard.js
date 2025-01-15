@@ -1,23 +1,39 @@
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
 
-const SmallCard = ({day, minTemp, maxTemp, icon, summary}) => {
-
+const SmallCard = ({ day, minTemp, maxTemp, icon, summary }) => {
   return (
-   
-    <div className="bg-teal-300 rounded-2xl h-[10vh] w-72 justify-center shadow-xl bg-center bg-cover">
-      <div className="bg-black/50 text-white h-[100%] w-[100%] rounded-xl pt-4 pr-3 pl-5 pb-3 flex flex-row justify-between">
-      <div id="icon" className=""></div>
-      <Image src={`https://openweathermap.org/img/wn/${icon}@2x.png`} width="200" height="200" alt={`weather icon showing ${summary}`}/>
-      <div id="top">
-        <h4 id= "day" className="text-right font-bold text-md">{day}</h4>
-        <p id= "minmaxtemp" className="font-normal text-md text-right pt-1">(<span id="minTemp">{minTemp}&#176;C</span> - <span id="maxTemp">{maxTemp}&#176;C</span>) </p>
-        <p id= "summary" className="font-normal text-right text-sm">{summary}</p>
-    </div>
+    <div
+      className="bg-cyan-800 rounded-2xl w-72 shadow-xl bg-center bg-cover
+    rounded-xl my-2 p-6 pt-4 pr-3 pb-3 flex flex-row justify-center text-white"
+    >
 
-   </div>
-    </div>
-  )
-}
+      <div id="">
 
-export default SmallCard
+        <h4 id="day" className="text-left font-bold text-md mt-1">
+          {day}
+        </h4>
+        <p id="minmaxtemp" className="font-normal text-md text-left mb-2">
+          (<span id="minTemp">{minTemp}&#176;C</span> -{" "}
+          <span id="maxTemp">{maxTemp}&#176;C</span>){" "}
+        </p>
+        <p id="summary" className="font-normal text-left
+      text-pretty text-sm mb-4">
+          {summary}
+        </p>
+
+      </div>
+
+      <img
+  src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+  width={100}
+  height={100}
+  style={{ objectFit: "contain" }}
+  alt={`weather icon showing ${summary}`}
+/>
+
+    </div>
+  );
+};
+
+export default SmallCard;
