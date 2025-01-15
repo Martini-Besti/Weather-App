@@ -47,12 +47,13 @@ export default function Home() {
 
   //getting time data from API and converting to human-readable date & day of the week
   var date = new Date(weather?.current?.dt * 1000);
-  const allDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Saturday"];
+  const allDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   const dateText = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${allDays[date.getDay() - 1]}`;
 
   
   //getting time data from API and converting to human-readable date & day of the week
  
+   
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -61,63 +62,25 @@ export default function Home() {
         
       </div>
       <div>
-        {/* <select
-          value={nationality}
-          onChange={(e) => setNationality(e.target.value)}
-        >
-          <option value="">All Nationalities</option>
-          {nationalities.map((nat) => {
-            return (
-              <option key={nat} value={nat}>
-                {nat}
-              </option>
-            );
-          })}
-        </select>
-        <select value={gender} onChange={(e) => setGender(e.target.value)}>
-          <option value="">All Genders</option>
-          <option value={"male"}>Male</option>
-          <option value={"female"}>Feale</option>
-        </select> */}
 
-        {/*
-            {weather.current} {" "}
-            <img src={weather.daily} />{" "}
-            */}
-
-        {/*
-
-         {weather.map((weather, index) => {
-        return (
-          <div key={index}>
-            {weather.current.temp} {" "}
-            <img src={weather.daily.weather.icon} />{" "}
-          </div>
-        );
-      })}
-
-      */}
-
-      <main className="w-[100vw] flex justify-center">
+      <main className="pt-4 w-[100vw] flex flex-col items-center bg-cyan-500">
       <MainCard 
         date={dateText}
         temp={parseInt(weather?.current?.temp)} 
         wind={weather?.current?.wind_speed}
-        location={weather?.timezone}
+        location={weather?.timezone?.split("/")[1]}
       />
-
-      </main>
-
+      
         <div>
 
           {weather?.daily?.map((item, index) => {
              var day = new Date(item.dt * 1000);
-             const dayText = `${allDays[day.getDay() - 1]}`;
+             const dayText = `${allDays[day.getDay()]}`;
             return <SmallCard 
             key={index} 
             icon={item.weather[0].icon}
-            minTemp={item.temp.min}
-            maxTemp={item.temp.max}
+            minTemp={parseInt(item.temp.min)}
+            maxTemp={parseInt(item.temp.max)}
             summary={item.summary}
             day={dayText}
             
@@ -126,6 +89,8 @@ export default function Home() {
           })}
 
         </div>
+        
+      </main>
 
         {/* //<div> {weather?.current?.temp}</div> */}
       </div>
