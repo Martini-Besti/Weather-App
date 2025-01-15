@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { ApiClient } from "./client";
 
 import MainCard from "@/components/MainCard";
+import SmallCard from "@/components/SmallCard";
 
 const longitude = 51.51;
 const latitude = 0.12;
@@ -100,14 +101,16 @@ export default function Home() {
         wind={weather?.current?.wind_speed}
         location={weather?.timezone}
       />
+
       </main>
 
-        {/* <div>
+        <div>
+
           {weather?.daily?.map((item, index) => {
-            return <div key={index}>{item.wind_speed}</div>;
+            return <SmallCard icon={item.weather[0].icon} />
           })}
 
-        </div> */}
+        </div>
 
         {/* //<div> {weather?.current?.temp}</div> */}
       </div>

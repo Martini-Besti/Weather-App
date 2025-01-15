@@ -13,7 +13,7 @@ const MainCard = ({date, temp, wind, location}) => {
         <h3 id= "wind" className="font-semibold text-right text-2xl">{wind} mph</h3>
     </div>
     
-   <h2 id= "location" className="text-1xl text-left text-md font-semibold">{`${location}`.toUpperCase()}</h2>
+   <h2 id= "location" className="text-1xl text-left text-md font-semibold uppercase">{location}</h2>
 
    </div>
     </div>
