@@ -50,6 +50,10 @@ export default function Home() {
   const allDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Saturday"];
   const dateText = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${allDays[date.getDay() - 1]}`;
 
+  
+  //getting time data from API and converting to human-readable date & day of the week
+ 
+
   return (
     <div className="max-w-7xl mx-auto">
       {error && <div>There was an error</div>}
@@ -107,7 +111,18 @@ export default function Home() {
         <div>
 
           {weather?.daily?.map((item, index) => {
-            return <SmallCard icon={item.weather[0].icon} />
+             var day = new Date(item.dt * 1000);
+             const dayText = `${allDays[day.getDay() - 1]}`;
+            return <SmallCard 
+            key={index} 
+            icon={item.weather[0].icon}
+            minTemp={item.temp.min}
+            maxTemp={item.temp.max}
+            summary={item.summary}
+            day={dayText}
+            
+           />
+
           })}
 
         </div>
