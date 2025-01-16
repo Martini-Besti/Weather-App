@@ -22,23 +22,27 @@ export class ApiClient {
 
     }
 
+    // accept in latitude and longitude as parameters for getWeather
+    // pass them to get request as second argument of getRequest function
     async getWeather() {
         return this.getRequest("");
     }
-
-   
     
-    //FINISH IF HAVE TIME TO PUT IN DROPDOWN
-    // async getWeatherByLocation({longitude, latitude}) {
-    //     const params = { results: 10};
-    //     if (nationality) params.nat = nationality;
-    //     if (gender) params.gender = gender;
-    //     return this.getRequest("", params);
-    // }
+    //Drop down list of locations
+    async getWeatherByLocation(latitude, longitude) {
+        
+        console.log("lon/lat:", latitude, ":", longitude);
 
-   
+        let params = { results: 10 };
+        if (longitude) params.lon = longitude;
+        if (latitude) params.lat = latitude;
+
+        return this.getRequest("", params);
+    }
+
     //filtering weather data by date
     async getWeatherByFilters({day}) {
+        //
         const params = { results: 10};
         if (day) params.day = date;
         return this.getRequest("", params);
