@@ -2,9 +2,20 @@ import React from 'react'
 
 const MainCard = ({date, temp, wind, location}) => {
 
+  var outerClassNames = "bg-teal-300 rounded-2xl h-[40vh] w-72 justify-center shadow-xl bg-center bg-cover ";
+  
+  if(temp < 5) {
+  outerClassNames += `bg-cold`;
+  } else if  
+  (temp < 20) {
+    outerClassNames += `bg-warm`;
+  } else if 
+  (temp > 20) {
+    outerClassNames += `bg-hot`;
+  }
+  
   return (
-   
-    <div className="bg-teal-300 rounded-2xl h-[40vh] w-72 justify-center shadow-xl bg-center bg-cover bg-[url('https://i.ibb.co/bm2gJPj/openart-image-UQSYglr5-1736791992891-raw.png')]">
+     <div className={outerClassNames} >
       <div className="bg-black/50 text-white h-[100%] w-[100%] rounded-xl pt-4 pr-3 pl-5 pb-3 flex flex-col justify-between">
       
       <div id="top">
