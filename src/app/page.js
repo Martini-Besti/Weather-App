@@ -69,12 +69,20 @@ export default function Home() {
   //getting time data from API and converting to human-readable date & day of the week
 
   return (
-    <div className=" mx-auto">
+    <div className="md:h-[100vh]">
       {error && <div>There was an error</div>}
       <div className="text-center"></div>
       <div>
 
-        <main className="pt-4 w-[100vw] flex flex-col items-center bg-cyan-500">
+        <main className="
+          md: h-[100vh]
+          md: p-32
+          max-sm:pt-4
+          max-sm:items-center max-sm:w-[100vw] max-sm:flex max-sm:flex-col
+          md:grid md:grid-cols-2 md:gap-10
+        ">
+
+        <div className="md:flex md:flex-col md:justify-center md:items-center md:pl-4 md:pt-4 md:pb-4 md:col-start-1 col-end-1">
 
         <Locations
           changeLocationFunction={(name, lat, lon) => {
@@ -89,7 +97,9 @@ export default function Home() {
             location={cityName}
           />
 
-          <div>
+        </div>
+
+          <div className="md:grid md:grid-cols-2 gap:2">
             {weather?.daily?.map((item, index) => {
               var day = new Date(item.dt * 1000);
               const dayText = `${allDays[day.getDay()]}`;
@@ -105,6 +115,7 @@ export default function Home() {
               );
             })}
           </div>
+
         </main>
       </div>
     </div>
