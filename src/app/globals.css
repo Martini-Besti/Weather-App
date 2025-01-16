@@ -2,3 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.bg-hot {
+    background-image: url("https://i.ibb.co/wJV3Sbj/openart-image-f-LAGMI0-D-1736792359911-raw.png");
+}
+
+.bg-cold {
+    background-image: url("https://i.ibb.co/bm2gJPj/openart-image-UQSYglr5-1736791992891-raw.png");
+}
+
+.bg-warm {
+    background-image: url("https://i.ibb.co/r77v3q6/openart-image-z-GUOTX02-1736793429627-raw.png");
+}
