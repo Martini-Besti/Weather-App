@@ -28,7 +28,7 @@ const Locations = ({ name, changeLocationFunction }) => {
       className="mb-4 p-2 rounded-md w-72 border-solid border-4 border-cyan-800 bg-sky-200 text-slate-800"
       onChange={handleOnChange}
     >
-      <option selected>Choose your city...</option>
+      <option value="">Choose your city...</option>
       <option value="london">London/England</option>
       <option value="toronto">Toronto/Canada</option>
       <option value="sydney">Sydney/Australia</option>
