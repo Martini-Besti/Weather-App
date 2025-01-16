@@ -10,7 +10,7 @@ const MainCard = ({date, temp, wind, location}) => {
       <div id="top">
         <h4 id= "date" className="text-right font-extrabold text-md">{date}</h4>
         <h1 id= "temp" className="font-bold text-6xl text-right pt-1">{temp}&#176;C</h1>
-        <h3 id= "wind" className="font-semibold text-right text-2xl">{wind} mph</h3>
+        <h3 id= "wind" className="font-semibold text-right text-2xl">{wind} mph &#127788;</h3>
     </div>
     
    <h2 id= "location" className="text-1xl text-left text-md font-semibold uppercase">{location}</h2>

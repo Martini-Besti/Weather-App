@@ -14,8 +14,8 @@ const SmallCard = ({ day, minTemp, maxTemp, icon, summary }) => {
           {day}
         </h4>
         <p id="minmaxtemp" className="font-normal text-md text-left mb-2">
-          (<span id="minTemp">{minTemp}&#176;C</span> -{" "}
-          <span id="maxTemp">{maxTemp}&#176;C</span>){" "}
+          <span id="minTemp">{minTemp}&#176;C</span> -{" "}
+          <span id="maxTemp">{maxTemp}&#176;C</span>{" "}
         </p>
         <p id="summary" className="font-normal text-left
       text-pretty text-sm mb-4">

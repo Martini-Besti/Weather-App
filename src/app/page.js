@@ -56,7 +56,7 @@ export default function Home() {
    
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className=" mx-auto">
       {error && <div>There was an error</div>}
       <div className="text-center">
         
