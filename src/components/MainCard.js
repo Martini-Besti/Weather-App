@@ -2,7 +2,7 @@ import React from 'react'
 
 const MainCard = ({date, temp, wind, location}) => {
 
-  var outerClassNames = "bg-teal-300 rounded-2xl h-[40vh] w-72 justify-center shadow-xl bg-center bg-cover ";
+  var outerClassNames = "md:flex-grow md:w-full bg-teal-300 rounded-2xl h-[40vh] w-72 justify-center shadow-xl bg-center bg-cover ";
   
   if(temp < 5) {
   outerClassNames += `bg-cold`;

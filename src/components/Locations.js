@@ -25,7 +25,7 @@ const Locations = ({ name, changeLocationFunction }) => {
 
   return (
     <select
-      className="mb-4 p-2 rounded-md w-72 border-solid border-4 border-cyan-800 bg-sky-200 text-slate-800"
+      className="mb-4 p-2 rounded-md max-sm:w-72 md:w-full border-solid border-4 border-cyan-800 bg-sky-200 text-slate-800"
       onChange={handleOnChange}
     >
       <option value="">Choose your city...</option>
