@@ -18,9 +18,16 @@ C:.
     ├───public
     └───src
         ├───app
-        │   └───api
+        |    └───client.js
+        │    └───api
         │       └───weather
+        |            └───route.js
         └───components
+            └───Locations.js
+            └───MainCard.js
+            └───SmallCard.js
+        
+
 ```
 
 
