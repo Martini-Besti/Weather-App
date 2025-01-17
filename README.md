@@ -12,12 +12,18 @@ A React-based weather application that fetches and displays weather data based o
 
 ## Project Structure
 
-- `src/`: Contains all the source files for the application.
-  - `components/`: Contains reusable components like `Locations`, `MainCard`, and `SmallCard`.
-  - `client.js`: API client for fetching weather data.
-  - `Home.js`: The main component that handles the app logic and rendering of weather data.
-  
-- `public/`: Contains static assets like images or icons.
+```
+C:.
+└───Weather-App
+    ├───public
+    └───src
+        ├───app
+        │   └───api
+        │       └───weather
+        └───components
+```
+
+
   
 ## How It Works
 
