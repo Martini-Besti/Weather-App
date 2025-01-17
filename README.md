@@ -19,6 +19,9 @@ C:.
     └───src
         ├───app
         |    └───client.js
+        |    └───pages.js
+        |    └───layout.js
+        |    └───globals.css
         │    └───api
         │       └───weather
         |            └───route.js
