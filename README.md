@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Weather App
 
-## Getting Started
+A React-based weather application that fetches and displays weather data based on the user's location or selected city. The app provides a 7-day forecast with current weather details such as temperature, wind speed, and a summary. The user can also select a city or location to view its weather information.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Displays current weather conditions for a given location.
+- 7-day weather forecast with temperature, wind speed, and weather icon.
+- Location selection to view weather in different cities.
+- User-friendly and responsive design.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/`: Contains all the source files for the application.
+  - `components/`: Contains reusable components like `Locations`, `MainCard`, and `SmallCard`.
+  - `client.js`: API client for fetching weather data.
+  - `Home.js`: The main component that handles the app logic and rendering of weather data.
+  
+- `public/`: Contains static assets like images or icons.
+  
+## How It Works
 
-## Learn More
+1. **API Client**: The app uses an API client (`ApiClient`) to fetch weather data. The `getWeatherByLocation` method is called with the latitude and longitude to retrieve the weather details from the external API.
 
-To learn more about Next.js, take a look at the following resources:
+2. **State Management**: 
+   - `useState` is used to manage the application state, such as weather data, city name, loading state, and error handling.
+   - `useEffect` is used to trigger the `fetchWeather` function whenever the `latitude` or `longitude` changes, ensuring that the weather data is updated accordingly.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Weather Data**:
+   - The app shows the current weather (temperature, wind speed) along with a 7-day forecast.
+   - The date is converted to a human-readable format with the help of JavaScript's `Date` object.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Location Selection**:
+   - The user can change the location by selecting a city from the `Locations` component, which updates the `latitude` and `longitude` state variables.
 
-## Deploy on Vercel
+5. **Responsive Layout**:
+   - The layout is responsive, using Tailwind CSS to create a mobile-first, grid-based design that adjusts for larger screens.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Components
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### `Locations`
+
+- Provides a user interface to select a city.
+- Passes the selected city's name, latitude, and longitude to the parent component to fetch weather data.
+
+### `MainCard`
+
+- Displays the current weather information, including the date, temperature, wind speed, and city name.
+
+### `SmallCard`
+
+- Displays a summary of the weather forecast for the upcoming days, including minimum and maximum temperatures and weather icons.
+
+## API
+
+The application fetches weather data using the OpenWeather API (or any other suitable weather API). You will need to set up your API client accordingly.
+
