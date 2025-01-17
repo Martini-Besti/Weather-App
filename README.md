@@ -25,9 +25,7 @@ C:.
         └───components
             └───Locations.js
             └───MainCard.js
-            └───SmallCard.js
-        
-
+            └───SmallCard.js 
 ```
 
 
